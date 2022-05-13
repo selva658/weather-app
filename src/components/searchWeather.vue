@@ -608,36 +608,36 @@ export default{
          let hour11=new Date(hour1*1000)
          this.hourlyArr=hour11.toLocaleTimeString()
 
-         let hour2=(res.data.hourly[0].dt)
+         let hour2=(res.data.hourly[1].dt)
          let hour22=new Date(hour2*1000)
          this.hourlyArr1=hour22.toLocaleTimeString()
 
-         let hour3=(res.data.hourly[0].dt)
+         let hour3=(res.data.hourly[2].dt)
          let hour33=new Date(hour3*1000)
          this.hourlyArr2=hour33.toLocaleTimeString()
 
-         let hour4=(res.data.hourly[0].dt)
+         let hour4=(res.data.hourly[3].dt)
          let hour44=new Date(hour4*1000)
          this.hourlyArr3=hour44.toLocaleTimeString()
 
         //hourly-weather
          this.hourlyWeather1=res.data.hourly[0].weather[0].main
-         this.hourlyWeather2=res.data.hourly[0].weather[0].main
-         this.hourlyWeather3=res.data.hourly[0].weather[0].main
-         this.hourlyWeather4=res.data.hourly[0].weather[0].main
+         this.hourlyWeather2=res.data.hourly[1].weather[0].main
+         this.hourlyWeather3=res.data.hourly[2].weather[0].main
+         this.hourlyWeather4=res.data.hourly[3].weather[0].main
 
         
         //hourly-weather images
          let icon1=res.data.hourly[0].weather[0].icon
          this.hourlyicon1=`https://openweathermap.org/img/w/${icon1}.png`;
 
-         let icon2=res.data.hourly[0].weather[0].icon
+         let icon2=res.data.hourly[1].weather[0].icon
          this.hourlyicon2=`https://openweathermap.org/img/w/${icon2}.png`;
 
-         let icon3=res.data.hourly[0].weather[0].icon
+         let icon3=res.data.hourly[2].weather[0].icon
          this.hourlyicon3=`https://openweathermap.org/img/w/${icon3}.png`;
 
-         let icon4=res.data.hourly[0].weather[0].icon
+         let icon4=res.data.hourly[3].weather[0].icon
          this.hourlyicon4=`https://openweathermap.org/img/w/${icon4}.png`;
 
          })
