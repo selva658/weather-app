@@ -1,33 +1,37 @@
 <template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
 <div class="rheader">
     <div class="rfcontainer">
        <p class="highlight">Today's Highlight</p>
        <table class="weathertable">
           <tr>
-             <td><i class="wi wi-thermometer"></i></td>
+             <td><i class="wi wi-thermometer" id="icon1"></i></td>
              <td class="wname">High</td>
-             <td>{{hightemp}}°</td>
-             <td><i class="wi wi-thermometer"></i></td>
+             <td  id="info1">{{hightemp}} °C</td>
+             <td><i class="wi wi-thermometer" id="icon2"></i></td>
              <td class="wname">Low</td>
-             <td>{{lowtemp}}°</td>
+             <td id="info1">{{lowtemp}} °C</td>
           </tr>
           <tr>
-             <td><i class="wi wi-humidity"></i></td>
+             <td><i class="wi wi-humidity" id="icon3"></i></td>
              <td class="wname">Humidity</td>
-             <td>{{humidity}}%</td>
-             <td><i class="wi wi-dust"></i></td>
+             <td id="info1">{{humidity}} %</td>
+             <td><i class="wi wi-dust" id="icon4"></i></td>
              <td class="wname">Visibility</td>
-             <td>{{visibility}}km</td>
+             <td id="info1">{{visibility}} km</td>
              
           </tr>
            <tr>
-             <td><i class="wi wi-horizon-alt"></i></td>
+             <td><i class="wi wi-horizon-alt" id="icon5"></i></td>
              <td class="wname">UV Index</td>
-             <td>{{uvi}}</td>
-             <td><i class="wi wi-strong-wind"></i></td>
+             <td id="info1">{{uvi}}</td>
+             <td><i class="wi wi-strong-wind" id="icon6"></i></td>
              <td class="wname">Wind Speed</td>
-             <td>{{windspeed}}km/h</td> 
+             <td id="info1">{{windspeed}} km/h</td> 
           </tr>
            <!-- <tr>
              <td><i class="wi wi-barometer"></i></td>
@@ -40,9 +44,11 @@
        </table>
     </div>
     <div class="rscontainer">
+       <button class="btn1" @click="previous">ᐊ</button>
        <button class="btn" @click="hourlyData">Hourly</button>
-       <button class="btn" @click="dailyData">Daily</button>
-       <table class="weathers" v-if="btnHourly">
+      <button class="btn1" @click="next">ᐅ</button>
+      <button class="btn" style="margin-left:5%;" @click="dailyData">Daily</button>
+       <table  class="weathers" v-if="btnHourly">
           <tr>
              <td><img :src='hourlyicon1'><br>{{h1}}<br>{{h1w}}</td>
              <td><img :src='hourlyicon2'><br>{{h2}}<br>{{h2w}}</td>
@@ -111,7 +117,9 @@ props:{
    humidity:{},
    visibility:{},
    windspeed:{},
-   uvi:{}
+   uvi:{},
+   previous:{},
+   next:{}
 },
 methods:{
    hourlyData(){
@@ -143,70 +151,148 @@ methods:{
    width: 40%;
    display: inline-block;
    vertical-align: top;
-   margin-top: 5%;
-   text-align: left;
+  
+    align-items: center;
+   text-align: center ;
+   padding:20px;
+
 }
 
 .rfcontainer{
    border:1px solid wheat;
    height: 30vh;
-   padding:5px;
+   padding:15px;
    width: 100%;
-   border-radius: 2%;
+   align-items: center;
+   text-align: center ;
+   border-radius: 4%;
    background-color: white;
+   padding-bottom: 8%;
+
    /* background-image: url(https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__340.jpg); */
-   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .rscontainer{
+   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
    border:1px solid wheat;
-   padding:5px;
+   padding:15px;
    height: 30vh;
    width: 100%;
+    padding-bottom: 2%;
    margin-top: 2%;
+   text-align: left;
    border-radius: 2%;
    background-color: white;
    /* background-image: url(https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__340.jpg); */
    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .btn{
-  background-color: orange;
+  background-color: blue;
   color: white;
-  margin-left: 2%;
+ margin-left:1%;
   height: 18%;
-  border:1px solid orange;
+  border:1px solid blue;
   border-radius: 5px;
   cursor: pointer;
-  width: 15%;
+  width: 10%;
+
+box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    transition: all .2s ease-in-out;
+
 }
+
+.btn:hover{
+transform: scale(1.1);
+
+}
+.btn1{
+ margin-left:1%;
+  background-color: blue;
+  color: white;
+  height: 18%;
+  border:1px solid blue;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 5%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: all .2s ease-in-out;
+}
+.btn1:hover{
+transform: scale(1.1);
+
+}
+/* .rscontainer:nth-child(4){
+   margin-left:10%;
+} */
+
 
 .weathers td{
    height: 15vh;
-   width: 10%;
+   width: 5%;
    border:1px solid orange;
    text-align: center;
    border-radius: 5px;
+   margin-left: 1.2%;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 }
 .weathers{
    margin-top: 2%;
-   margin-left: 1.5%;
+ 
 }
 td{ 
   padding: 10px; 
   border-bottom: 1px solid #ccc; 
   text-align: left; 
   font-size: 16px;
+  font-family:Arial;
+font-weight: 500;
+ 
   /* color: white; */
   }
 td > i {
-  color: #878686;
+
   font-size: 25px;
 }
-.highlight{
-   /* color: white; */
-   font-weight: bolder;
+#icon1{
+color: orangered;
 }
+#icon2{
+color: skyblue;
+}
+#icon3{
+color: rgb(11, 211, 144);
+}
+#icon4{
+color: rgb(142, 179, 83);
+}
+#icon5{
+   color:yellow;
+}
+#icon6{
+   color:skyblue;
+}
+.highlight{
+   font-weight: bolder;
+   font-weight: bolder;
+ font-size: 18px;
+  transition: all .2s ease-in-out;
+}
+.highlight:hover{
+transform: scale(1.1);
+}
+.weathertable{
+   margin-left: 4%;
+}
+#info1{
+  transition: all .2s ease-in-out;
+}
+#info1:hover{
+transform: scale(1.1);
+}
+
 
 @media (max-width:500px) {
   .rheader{
@@ -249,11 +335,7 @@ td > i {
   .weathertable{
      margin: auto;
   }
-  .highlight{
-     margin-left: 38%;
-     color: orange;
-     font-size: 30px;
-  }
+
   .rscontainer{
      text-align: center;
      padding-top: 20px;
